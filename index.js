@@ -16,11 +16,73 @@ const Employee = require("./lib/Employee");
 let team = [];
 
 async function startProgram(){
-team.push(new Employee())
+    manager();
 
-let htmlDoc = render(team)
+  function addMember () {
+        inquirer.prompt([
+            {
+              type: "list",
+              name: "type",
+              message: "Add an Employee to the team?",
+              choices: ["Manager","Engineer", "Intern"],
+            },
+          ])
+          .then((val) => {
+            if (val.type === "Manager") {
+              engineerQuery();
+            } else if (val.type === "Engineer") {
+              internQuery();
+            } else if (val.type === "Intern") {
+                internQuery();
+            } else {
+              createFile();
+            }
+          });
+  }
+  
+  function manager(){
+        inquirer.prompt([
+            {
+                type:'input',
+                name: 'name',
+                message: 'What is the name of the manager?',
+            },
+    
+            {
+                type:'input',
+                name: 'id',
+                message: 'What is the manager ID ?',
+            },
+    
+            {
+                type:'input',
+                name: 'email',
+                message: 'What is the email?',
+    
+            },
 
- await fs.writeFile(outputPath, htmlDoc);
+            {
+                type:'input',
+                name: 'officeNumber',
+                message: 'What is the office number?',
+            },
+        ])
+
+    .then((val) => {
+        team.push(new Manager(
+            val.name,
+            val.id,
+            val.email,
+            val.officeNumber
+        ));
+    })
+    addMember();
+
+  }
+   
+  let htmlDoc = render(team)
+
+   await fs.writeFile(outputPath, htmlDoc);
 
 }
 
