@@ -11,37 +11,40 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
 const Employee = require("./lib/Employee");
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-
+// create an empty array to retrive the employees values
 let team = [];
 
+// create a function to start the program
 async function startProgram(){
-    manager();
-
-  function addMember () {
-        inquirer.prompt([
+  addMember();
+}
+//create a function to start the user prompt to select employee category
+ async function addMember () {
+  await inquirer.prompt([
             {
               type: "list",
               name: "type",
               message: "Add an Employee to the team?",
-              choices: ["Manager","Engineer", "Intern"],
+              choices: ["Manager","Engineer", "Intern","Not at the momment"],
             },
           ])
           .then((val) => {
             if (val.type === "Manager") {
-              engineerQuery();
+              manager();
             } else if (val.type === "Engineer") {
-              internQuery();
+              engineer();
             } else if (val.type === "Intern") {
-                internQuery();
-            } else {
+              intern();
+            }else{
+             
               createFile();
             }
           });
   }
-  
-  function manager(){
-        inquirer.prompt([
+
+  // add function for manager query and push the value to array team 
+ async function manager(){
+     await inquirer.prompt([
             {
                 type:'input',
                 name: 'name',
@@ -68,22 +71,107 @@ async function startProgram(){
             },
         ])
 
-    .then((val) => {
-        team.push(new Manager(
-            val.name,
-            val.id,
-            val.email,
-            val.officeNumber
-        ));
-    })
-    addMember();
+        .then((val) => {
+          team.push(new Manager(
+              val.name,
+              val.id,
+              val.email,
+              val.officeNumber
+          ));
+          console.log("Succefully add Manager to the team!")
+      })
+      addMember();
+      
+    }
 
-  }
-   
-  let htmlDoc = render(team)
+ // add function for engineer query and push the value to array team 
+    async function engineer(){
+      await inquirer.prompt([
+             {
+                 type:'input',
+                 name: 'name',
+                 message: 'What is the name of the engineer?',
+             },
+     
+             {
+                 type:'input',
+                 name: 'id',
+                 message: 'What is the engineer ID ?',
+             },
+     
+             {
+                 type:'input',
+                 name: 'email',
+                 message: 'What is the email?',
+     
+             },
+ 
+             {
+                 type:'input',
+                 name: 'gitHub',
+                 message: 'What is the gitHub user name?',
+             },
+         ])
+ 
+         .then((val) => {
+           team.push(new Engineer(
+               val.name,
+               val.id,
+               val.email,
+               val.gitHub
+           ));
+           console.log("Succefully add Engineer to the team!")
+       })
 
-   await fs.writeFile(outputPath, htmlDoc);
+       addMember();
+       
+     }
 
-}
+ // add function for intern query and push the value to array team 
+     async function intern(){
+      await inquirer.prompt([
+             {
+                 type:'input',
+                 name: 'name',
+                 message: 'What is the name of the intern?',
+             },
+     
+             {
+                 type:'input',
+                 name: 'id',
+                 message: 'What is the intern ID ?',
+             },
+     
+             {
+                 type:'input',
+                 name: 'email',
+                 message: 'What is the email?',
+     
+             },
+ 
+             {
+                 type:'input',
+                 name: 'schoolName',
+                 message: 'What is the school name?',
+             },
+         ])
+ 
+         .then((val) => {
+           team.push(new Intern(
+               val.name,
+               val.id,
+               val.email,
+               val.schoolName
+           ));
+           console.log("Succefully add Intern to the team!")
+       })
+      
+       addMember();
+     }
+
+  // let htmlDoc = render(team)
+
+  //  await fs.writeFile(outputPath, htmlDoc);
+
 
 startProgram()
