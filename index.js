@@ -9,16 +9,15 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
-const Employee = require("./lib/Employee");
 
-// create an empty array to retrive the employees values
+// create an empty array to retrive the employee value
 let team = [];
 
 // create a function to start the program
 async function startProgram(){
   addMember();
 }
-//create a function to start the user prompt to select employee category
+//create a function to start the user prompt list to select employee category and execute the category function  
  async function addMember () {
   await inquirer.prompt([
             {
@@ -36,7 +35,6 @@ async function startProgram(){
             } else if (val.type === "Intern") {
               intern();
             }else{
-             
               createFile();
             }
           });
@@ -169,9 +167,10 @@ async function startProgram(){
        addMember();
      }
 
-  // let htmlDoc = render(team)
-
-  //  await fs.writeFile(outputPath, htmlDoc);
-
+//function to create a file in the output folder and method to passing in the outputPath, render(team) and "UTF-8" as parameters. 
+   function createFile() {
+      fs.writeFileSync(outputPath, render(team), "UTF-8");
+      console.log("File Succefully created in the output folder");
+  }
 
 startProgram()
