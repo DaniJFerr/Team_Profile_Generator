@@ -144,7 +144,6 @@ async function startProgram(){
                  type:'input',
                  name: 'email',
                  message: 'What is the email?',
-     
              },
  
              {
