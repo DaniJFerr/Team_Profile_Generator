@@ -25,7 +25,7 @@ node index.js
 
 ## Features
 
-[![badge](https://img.shields.io/badge/javascriot-green)][1]
+[![badge](https://img.shields.io/badge/javascript-green)][1]
 [![badge](https://img.shields.io/badge/node.js-yellowgreen)][2]
 [![badge](https://img.shields.io/badge/npm-yellow)][3]
 [![badge](https://img.shields.io/badge/html-orange)][4]
