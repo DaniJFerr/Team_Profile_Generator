@@ -25,12 +25,20 @@ node index.js
 
 ## Features
 
-![badge](https://img.shields.io/badge/javascriot-green)
-![badge](https://img.shields.io/badge/node.js-yellowgreen)
-![badge](https://img.shields.io/badge/npm-yellow)
-![badge](https://img.shields.io/badge/html-orange)
-![badge](https://img.shields.io/badge/css-blue)
-![badge](https://img.shields.io/badge/bootstrap-blueviolet)
+[![badge](https://img.shields.io/badge/javascriot-green)][1]
+[![badge](https://img.shields.io/badge/node.js-yellowgreen)][2]
+[![badge](https://img.shields.io/badge/npm-yellow)][3]
+[![badge](https://img.shields.io/badge/html-orange)][4]
+[![badge](https://img.shields.io/badge/css-blue)][5]
+[![badge](https://img.shields.io/badge/bootstrap-blueviolet)][6]
+
+[1]: https://www.w3schools.com/js
+[2]: https://nodejs.org/en/
+[3]: https://www.npmjs.com/
+[4]: https://www.w3schools.com/html
+[5]: https://www.w3schools.com/css
+[6]: https://getbootstrap.com 
+
 
 
 ## Usage
