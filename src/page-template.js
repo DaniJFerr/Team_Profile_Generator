@@ -93,6 +93,7 @@ module.exports = team => {
     <title>My Team</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/ff38e5c58a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
 
@@ -108,11 +109,15 @@ module.exports = team => {
     </div>
     <div class="container">
         <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
+            <div class="team-area col-12 justify-content-center">
                 ${generateTeam(team)}
             </div>
         </div>
     </div>
+
+    <footer>
+      <p>Copyright ⓒ {year} <a href="https://github.com/DaniJFerr/Team_Profile_Generator"><i class="fa-brands fa-github"></i></a></p>
+    </footer>
 </body>
 </html>
     `;
